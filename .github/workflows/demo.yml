@@ -30,13 +30,13 @@ jobs:
       # - name: Build Website
       #   run: npm run build
       - name: Upload artifacts 
-        uses: actions/upload-artifact@v3        # needed for this action to upload the artifacts/ files produced
+        uses: actions/upload-artifact@v4        # needed for this action to upload the artifacts/ files produced
         with:
           name: dist-files                      # this is the dir where the file would be produced
           path: |                               # | is for multi-line
             dist                 
             package.json      
-            
+
   deploy:
     needs: build
     runs-on: ubuntu-latest
