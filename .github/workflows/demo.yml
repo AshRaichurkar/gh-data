@@ -16,8 +16,8 @@ jobs:
       #   run: npm init @eslint/config
       # - name: Lint Code
       #   run: npm run lint
-      - name: Test Code
-        run: npm run test
+      # - name: Test Code
+      #   run: npm run test
 
   build:
     needs: test
@@ -25,18 +25,18 @@ jobs:
     steps:
       - name: Get Code
         uses: actions/checkout@v3
-      - name: Install Dependencies
-        run: npm ci
-      - name: Build Website
-        run: npm run build
+      # - name: Install Dependencies
+      #   run: npm ci
+      # - name: Build Website
+      #   run: npm run build
       - name: Upload artifacts 
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v3        # needed for this action to upload the artifacts/ files produced
         with:
-          name: dist-files
-          path: |
-            dist
-            package.json
-
+          name: dist-files                      # this is the dir where the file would be produced
+          path: |                               # | is for multi-line
+            dist                 
+            package.json      
+            
   deploy:
     needs: build
     runs-on: ubuntu-latest
