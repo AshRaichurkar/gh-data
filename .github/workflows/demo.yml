@@ -41,5 +41,11 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
+      - name: Get Build artifacts
+        uses: actions/download-artifact@v4
+        with: 
+          name: dist-files                        # download all the diles in dist-files folder
+      - name: List objects in dist-list 
+        run: ls                                   # list all the contents of dist-files
       - name: Deploy
         run: echo "Deploying......."
